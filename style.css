@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
 
-/*@*/
-
 :root {
     --black: #020202;
     --dark: #393E46;
@@ -19,10 +17,10 @@
 body {
     background-color: var(--black);
     min-height: 100vh;
-    max-width: 100%;
+    max-width: 100vw;
     font-family: "Inter";
     display: flex;
-	flex-direction: column;
+	  flex-direction: column;
     perspective: 600px;
 }
 h1, #welcome span, p {
@@ -44,18 +42,49 @@ p {
     --max: 1.5em;
 }
 a, a:hover, a:focus, a:active {
-    color: var(--primary);
+    color: inherit;
     text-decoration: none;
 }
 section {
-    max-width: 100%;
+    max-width: 100vw;
     padding: 5rem 2rem;
 }
 .hidden {
     opacity: 0;
 }
+#navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding-left: 5rem;
+}
+/* link hover */
+.menuItem::before {
+    transform: scaleX(0);
+    transform-origin: bottom right;
+}
+.menuItem:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.menuItem::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    inset: 0 0 0 0;
+    z-index: -1;
+    background: var(--primary);
+    transition: transform 1s ease;
+}
+.menuItem {
+    position: relative;
+    padding: 0.5rem 4rem 0.5rem 1rem;
+    color: var(--white);
+}
 
-#welcomeSect {
+#hero {
     display: flex;
 }
 #svgImg {
@@ -84,39 +113,9 @@ section {
     font-weight: 600;
     color: var(--primary);
 }
-#bio {
-    margin-bottom: 38px;
-}
-#welcome span {
-    /* width: 700px; */
-    display: block;
+#welcome span{
+    margin-bottom: 50px;
     color: var(--white);
-    margin-top: 15px;
-    font-weight: 400;
-}
-
-/* link hover */
-.menuItem::before {
-    transform: scaleX(0);
-    transform-origin: bottom right;
-}
-.menuItem:hover::before {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-.menuItem::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    inset: 0 0 0 0;
-    z-index: -1;
-    background: var(--white);
-    transition: transform 1s ease;
-}
-.menuItem {
-    position: relative;
-    color: var(--primary);
 }
 
 /* confetti */
@@ -136,43 +135,67 @@ section {
 #aboutSect {
     background-color: var(--bright);
     position: relative;
-    padding-top: 7em;
-    padding-bottom: 5em;
+    width: 700px;
+    border-radius: 30px;
+    margin: 5em;
+    padding: 5em 3em;
     display: flex;
 }
-.custom-shape-divider-top-1628770719 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+.custom-shape-divider-top-1640715458 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
 }
 
-.custom-shape-divider-top-1628770719 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 108px;
+.custom-shape-divider-top-1640715458 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 55px;
 }
 
-.custom-shape-divider-top-1628770719 .shape-fill {
-    fill: var(--black);
+.custom-shape-divider-top-1640715458 .shape-fill {
+  fill: var(--black);
 }
+
+.custom-shape-divider-bottom-1640717214 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1640717214 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 55px;
+}
+
+.custom-shape-divider-bottom-1640717214 .shape-fill {
+  fill: var(--black);
+}
+
 #about {
     width: 550px;
 }
 
 #projectSect {
     height: 400px;
-    background: rgb(2,2,2);
-    background: linear-gradient(0deg, rgba(2,2,2,1) 0%, rgba(170,216,211,1) 100%);
+    /* background: rgb(2,2,2); */
 }
 
 #contactSect {
     display: flex;
     flex-direction: column;
     position: relative;
+    background: linear-gradient(0deg, rgba(2,2,2,1) 0%, rgba(170,216,211,1) 100%);
 }
 
 /* this is for the quote div */
