@@ -10,7 +10,9 @@
 
   <body>
     <nav>
-      <div id="navbar">
+      <i id="hamburger" class="fa-solid fa-bars"></i>
+      
+      <div id="navbar" class="hidden">
         <div class="menuItem">
           <a href="#aboutSect">About</a>
         </div>
@@ -25,16 +27,22 @@
         </div>
       </div>
 
-      <div id="social">
-        <a href="" alt="github">Github</a>
-        <a href="" alt="twitter">LinkedIn</a>
-        <a href="" alt="twitter">Twitter</a>
+      <div id="social" class="hidden">
+        <a href="https://github.com/xeptional" alt="Github">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="" alt="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/exceptional_ly" alt="Twitter">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
       </div>
     </nav>
 
     <section id="hero">
       <div id="welcome">
-        <span class="hi">Hi! I am <strong>Tamilore</strong></span>
+        <span class="hi">Hi! I am <strong>Muyideen</strong></span>
         <p>a front-end web developer</p>
       </div>
       <div id="svgImg">
@@ -219,20 +227,6 @@
     </section>
 
     <section id="aboutSect">
-      <!-- <div class="custom-shape-divider-top-1640715458">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M602.45,3.86h0S572.9,116.24,281.94,120H923C632,116.24,602.45,3.86,602.45,3.86Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div> -->
-
       <span class="sect-heading">About</span>
 
       <p id="about">
@@ -242,20 +236,6 @@
         I am very passionate about accessibility for everyone. For leasure, I
         play chess, listen to music and read.
       </p>
-
-      <!-- <div class="custom-shape-divider-bottom-1640717214">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M602.45,3.86h0S572.9,116.24,281.94,120H923C632,116.24,602.45,3.86,602.45,3.86Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div> -->
     </section>
 
     <section id="projectSect">
@@ -267,7 +247,7 @@
         <!-- with javascript and a JSON file -->
 
         <div class="project">
-          <img src="image.png" alt="">
+          <img src="image.png" alt="My name is tamilore">
           <div class="project-info">
             <h3>title may be too long </h3>
             <span class='code'>category</span>
@@ -361,46 +341,55 @@
     </section>
 
     <section id="contactSect">
-
-      <form action="" id="contact-form">
-        
+      <form action="">
         <p>Let's build the world's next unicorn</p>
-        
+        <div id="form-message"></div>        
         <div class="form-element">
           <label htmlFor="fullName">Full Name</label>
           <input class="form-field"
+            id="contact-name"
             name="fullName"
             type="text"
             placeholder="Full Name"
             required
           />
+          <span class="error-message" id="name-err" aria-live="polite"></span>
         </div>
         <div class="form-element">
           <label htmlFor="email">Email</label>
           <input class="form-field"
+            id="contact-email"
             name="email"
             type="email"
             placeholder="Email"
             required
           />
+          <span class="error-message" id="email-err" aria-live="polite"></span>
         </div>
         <div class="form-element">
           <label htmlFor="subject">Subject</label>
           <input class="form-field"
+            id="contact-subject"
             name="subject"
             type="text"
             placeholder="Subject"
             required
           />
+          <span class="error-message" id="subject-err" aria-live="polite"></span>
         </div>
         <div class="form-element">
           <label htmlFor="message">Message</label>
           <textarea class="form-field"
+            id="contact-message"
             name="message"
             type="text"
             placeholder="Message"
             required
           ></textarea>
+          <span class="error-message" id="message-err" aria-live="polite"></span>
+        </div>
+        <div class="send">
+          <button id="form-submit" type="submit" value="Send">Send</button>
         </div>
         
       </form>
@@ -432,10 +421,11 @@
     </section>
 
     <section id="footer">
-      <small class="copyright">Tamilore Muyideen Adebayo 2022</small> <!--insert copyright notes here-->
+      <small class="copyright">&copy;  Tamilore Muyideen Adebayo 2022</small> <!--insert copyright notes here-->
     </section>
 
     <script src="./script.js"></script>
+    <script src="validator.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Anonymous+Pro");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
 :root {
   --black: #020202;
@@ -36,12 +37,14 @@ strong {
   --val: 9vw;
   --max: 4em;
 }
-.sect-heading, .hi {
+.sect-heading,
+.hi {
   --min: 1.5em;
   --val: 3vw;
   --max: 2em;
 }
-p, label {
+p,
+label {
   --min: 1em;
   --val: 2.5vw;
   --max: 1.5em;
@@ -57,22 +60,26 @@ section {
   max-width: 100vw;
 }
 .hidden {
-  opacity: 0;
+  display: none;
 }
 nav {
   position: fixed;
   z-index: 1;
   background-color: var(--black);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
+  flex-direction: column;
+  height: fit-content;
   width: 100%;
-  padding: 0 5%;
+  padding: 10px 5%;
+  color: var(--white);
 }
-#navbar {
-  
+#hamburger {
+  width: fit-content;
+  cursor: pointer;
 }
+/* #navbar, #social {
+  width: 40%;
+} */
 /* link hover */
 .menuItem::before {
   transform: scaleX(0);
@@ -105,8 +112,8 @@ nav {
   width: 100%;
   height: 100%;
 }
-#social {
-  color: var(--white);
+#social a {
+  margin: 10px 5px;
 }
 
 #hero {
@@ -134,12 +141,22 @@ nav {
   max-width: 55%;
 }
 @-webkit-keyframes fade-in {
-    from {opacity: 0; transform: scale(.7,.7)}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+    transform: scale(0.7, 0.7);
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fade-in {
-    from {opacity: 0; transform: scale(.7,.7)}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+    transform: scale(0.7, 0.7);
+  }
+  to {
+    opacity: 1;
+  }
 }
 #welcome strong {
   font-weight: 600;
@@ -222,30 +239,11 @@ nav {
 .project-info span.real {
   color: green;
 }
-.project-info, .project-description {
+.project-info,
+.project-description {
   padding: 1rem;
   white-space: normal;
 }
-
-/* .project-description {
-  background-color: var(--white);
-  color: var(--black);
-  padding: 2rem;
-  position: absolute;
-  max-height: 100%;
-  overflow: auto;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  transform: translateY(101%);
-  transition: transform 0.3s ease-in;
-}
-.project-description h4 {
-  margin-top: 0;
-}
-.project:hover .project-description {
-  transform: translateY(0);
-} */
 
 #contactSect {
   display: flex;
@@ -253,12 +251,40 @@ nav {
   justify-content: space-evenly;
   padding-bottom: 5rem;
 }
+input {
+  -webkit-appearance: none;
+  appearance: none;
+}
+/* input:invalid {
+  border-color: #900;
+}
+input:focus:invalid {
+  outline: none;
+} */
+.error {
+  border-color: #900;
+}
+.error-message {
+  color: #900;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+.error-message.active {
+  display: block;
+  visibility: visible;
+  padding: 0.3em;
+}
 #contact-form {
-  width: 80%;
+  width: 100%;
   color: var(--bright);
 }
 #contact-form p {
   margin-bottom: 50px;
+}
+#form-message {
+  /* background-color: var(--white); */
+  color: red;
+  padding: 20px;
 }
 .form-element {
   color: var(--bright);
@@ -270,10 +296,20 @@ nav {
   padding: 10px;
   margin-bottom: 20px;
   color: var(--white);
-  width: 80%;
+  width: 100%;
   border: none;
   border-bottom: 2px solid var(--primary);
   border-radius: 5px;
+}
+#form-submit {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: var(--bright);
+  font-size: 1.5em;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 50px;
 }
 
 /* this is for the quote div */
@@ -356,12 +392,25 @@ nav {
 }
 
 @media screen and (min-width: 40rem) {
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  #hamburger {
+    display: none;
+  }
+  #navbar, #social {
+    display: flex;
+    flex-direction: row;
+  }
   #svgImg {
     position: absolute;
     top: 150px;
     right: 40px;
   }
-
 
   #contact-form {
     width: 40%;

@@ -1,5 +1,16 @@
-//populating the projects section
+//the hamburger and mobile nav
+const hamburger = document.getElementById("hamburger");
+const navbar = document.getElementById("navbar");
+const social = document.getElementById("social");
 
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle("fa-xmark");
+
+  navbar.classList.toggle("hidden");
+  social.classList.toggle("hidden");
+})
+
+//populating the projects section
 const projects = document.getElementById('projects');
 
 function projectList(data) {
