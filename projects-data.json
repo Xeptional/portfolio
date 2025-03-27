@@ -1,0 +1,37 @@
+{
+  "projects": [
+    {
+      "name": "SIMULab",
+      "description": "An intelligent lab guide leveraging the LLaMA language model for real-time, responsive support in STEM education.",
+      "images": [
+        "images/simulab1.jpg",
+        "images/simulab2.jpg"
+      ],
+      "technologies": ["Python", "LLaMA", "React", "Firebase"],
+      "link": "https://simulab.example.com",
+      "github": "https://github.com/yourusername/simulab"
+    },
+    {
+      "name": "TechCompass Conference Website",
+      "description": "A React-based website for a tech conference aimed at computer science undergraduates.",
+      "images": [
+        "images/techcompass1.jpg",
+        "images/techcompass2.jpg"
+      ],
+      "technologies": ["React", "Tailwind CSS", "Firebase"],
+      "link": "https://techcompass.example.com",
+      "github": "https://github.com/yourusername/techcompass"
+    },
+    {
+      "name": "Automated Logistics Management System",
+      "description": "A system developed for the University of Ibadan to automate logistics and transport management.",
+      "images": [
+        "images/logistics1.jpg",
+        "images/logistics2.jpg"
+      ],
+      "technologies": ["Django", "PostgreSQL", "React"],
+      "link": "https://logistics.example.com",
+      "github": "https://github.com/yourusername/logistics"
+    }
+  ]
+}

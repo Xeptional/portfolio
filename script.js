@@ -1,3 +1,61 @@
+//preloader 
+window.addEventListener("load", function() {
+  let counter = this.document.getElementById("counter");
+  let preloader = this.document.getElementById("preloader");
+  let content = this.document.getElementById("content");
+  // let loaderBox = this.document.querySelector(".loader-box");
+  let barsContainer = this.document.querySelector(".bars-container");
+
+  let count = 0;
+  let startTime = this.performance.now();
+  let duration = 10000; //loader should last at least 10 seconds
+
+  //create 100 bars dynamically
+  for(let i = 0; i < 100; i++) {
+    let bar = this.document.createElement("div");
+    bar.classList.add("bar");
+    barsContainer.appendChild(bar);
+  }
+  let bars = this.document.querySelectorAll(".bar")
+
+  //function to update counter and bar animation
+  function updateLoader(timestamp) {
+    let elapsed = timestamp - startTime;
+    count = Math.min(Math.floor((elapsed / duration) * 100), 100);
+
+    counter.innerText = count + "%";
+
+    for(let i = 0; i < count; i++) {
+      bars[i].style.opacity = "1";
+    }
+
+    if(count === 100) {
+      barsContainer.classList.add("green-bars");
+    }
+
+    if(count < 100) {
+      requestAnimationFrame(updateLoader);
+    } else {
+      //wait 1 extra second after counter gets to 100%
+      setTimeout(() => {
+        preloader.style.display = "none";
+        content.style.display = "block";
+      }, 2000);
+    }
+  }
+
+  //ensure that the loader lasts at least 10 seconds
+  setTimeout(() => {
+    if(count >= 100) {
+      preloader.style.display = "none";
+      content.style.display = "block";
+    }
+  }, duration + 2000);
+
+  this.requestAnimationFrame(updateLoader);
+})
+
+
 //the hamburger and mobile nav
 const hamburger = document.getElementById("hamburger");
 const navbar = document.getElementById("navbar");
