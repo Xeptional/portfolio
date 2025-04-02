@@ -1,9 +1,8 @@
 //preloader 
-window.addEventListener("load", function() {
+window.addEventListener("DOMContentLoaded", () => {
   let counter = this.document.getElementById("counter");
   let preloader = this.document.getElementById("preloader");
-  let content = this.document.getElementById("content");
-  // let loaderBox = this.document.querySelector(".loader-box");
+  let content = document.getElementById("content");
   let barsContainer = this.document.querySelector(".bars-container");
 
   let count = 0;
@@ -36,10 +35,10 @@ window.addEventListener("load", function() {
     if(count < 100) {
       requestAnimationFrame(updateLoader);
     } else {
-      //wait 1 extra second after counter gets to 100%
+      //wait 2 extra second after counter gets to 100%
       setTimeout(() => {
-        preloader.style.display = "none";
-        content.style.display = "block";
+        preloader.classList.add("hidden");
+        content.classList.add("loaded");
       }, 2000);
     }
   }
@@ -47,8 +46,8 @@ window.addEventListener("load", function() {
   //ensure that the loader lasts at least 10 seconds
   setTimeout(() => {
     if(count >= 100) {
-      preloader.style.display = "none";
-      content.style.display = "block";
+      preloader.classList.add("hidden");
+      content.classList.add("loaded");
     }
   }, duration + 2000);
 
@@ -59,13 +58,33 @@ window.addEventListener("load", function() {
 //the hamburger and mobile nav
 const hamburger = document.getElementById("hamburger");
 const navbar = document.getElementById("navbar");
-const social = document.getElementById("social");
+const menuItem = document.querySelectorAll(".menuItem");
+// const social = document.getElementById("social");
 
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle("fa-xmark");
+  event.stopPropagation() // stops the document click event from closing the nav menu before it even appears
+  const expanded = hamburger.getAttribute("aria-expanded") === "true";
+  hamburger.setAttribute("aria-expanded", !expanded);
+  navbar.classList.toggle("active");
 
-  navbar.classList.toggle("hidden");
-  social.classList.toggle("hidden");
+  hamburger.innerHTML = expanded
+  ? '<i class="fa-solid fa-bars"></i>' 
+  : '<i class="fa-solid fa-times"></i>';
+});
+
+document.addEventListener("click", (event) => {
+  if(!navbar.contains(event.target) && !hamburger.contains(event.target)) {
+    navbar.classList.remove('active');
+    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>'
+  }
+});
+
+//close navbar when a menu item is clicked
+menuItem.forEach(item => {
+  item.addEventListener("click", () => {
+    navbar.classList.remove("active");
+    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>'
+  })
 })
 
 //populating the projects section
